@@ -7,6 +7,7 @@ import com.hhs.xgn.jmj.scoring.Ruleset;
 import com.hhs.xgn.jmj.scoring.Yaku;
 import com.hhs.xgn.jmj.util.HandUtil;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.function.Function;
@@ -22,6 +23,16 @@ public class DefaultRuleset extends Ruleset {
 
     public DefaultRuleset() {
         registerYaku(new Riichi());
+        registerYaku(new Chankan());
+        registerYaku(new Haitei());
+        registerYaku(new Houtei());
+        registerYaku(new Iipeikou());
+        registerYaku(new Ippatsu());
+        registerYaku(new MenchinTsumo());
+        registerYaku(new Pinfu());
+        registerYaku(new Rinshan());
+        registerYaku(new Tanyao());
+        registerYaku(new Yakuhai());
     }
 
     private long roundUpTo100(long x) {
@@ -50,9 +61,9 @@ public class DefaultRuleset extends Ruleset {
         }
 
         if (agariInfo.dealer) {
-            return a * 6;
+            return roundUpTo100(a * 6);
         } else {
-            return a * 4;
+            return roundUpTo100(a * 4);
         }
     }
 
@@ -60,7 +71,7 @@ public class DefaultRuleset extends Ruleset {
         HandDescriber solve(SortedHand sortedHand, boolean special);
     }
 
-    private void l(String s){
+    private void l(String s) {
         System.out.println(s);
     }
 
@@ -69,9 +80,10 @@ public class DefaultRuleset extends Ruleset {
 
         Solve solver = (SortedHand sortedHand, boolean special) -> {
             //calculate yakus
-            RonWrapper wrapper = new RonWrapper(null, hand, lastTile, ankan, fuuro, other, agariInfo, this);
+            RonWrapper wrapper = new RonWrapper(sortedHand, hand, lastTile, ankan, fuuro, other, agariInfo, this);
             HandDescriber now = new HandDescriber();
             for (Map.Entry<String, Yaku> yaku : yakus.entrySet()) {
+//                l("Checking yaku:"+yaku.getKey()+" but it is "+yaku.getValue().isNormalOnly());
                 if (!special || !yaku.getValue().isNormalOnly()) {
                     int score = yaku.getValue().check(wrapper);
                     if (score > 0) {
@@ -81,16 +93,22 @@ public class DefaultRuleset extends Ruleset {
             }
 
             //ignore
-            for(var e:yakus.entrySet()){
-                for(String s:yakus.get(e.getKey()).ignore()){
-                    yakus.remove(s);
-                }
+            ArrayList<String> del = new ArrayList<>();
+            for (Map.Entry<String,Yaku> e : yakus.entrySet()) {
+                del.addAll(Arrays.asList(yakus.get(e.getKey()).ignore()));
+            }
+            for (String s : del) {
+                yakus.remove(s);
             }
 
             //calculate fu
-            if (special || now.hasYaku("ph")) {
+            if (special) {
                 now.fu = 25;
+            } else if (now.yakus.containsKey("ph")) {
+                now.fu = 20;
             } else {
+                l("cf20");
+
                 int fu = 20;
                 for (int i = 0; i < 4; i++) {
                     if (sortedHand.mentsus[i] != null) {
@@ -203,14 +221,14 @@ public class DefaultRuleset extends Ruleset {
                 }
 
                 //round up
-//                if (fu % 10 != 0) {
-//                    fu = (fu / 10 + 1) * 10;
-//                }
+                if (fu % 10 != 0) {
+                    fu = (fu / 10 + 1) * 10;
+                }
 
                 now.fu = fu;
             }
 
-            l("Score of "+sortedHand+" Returned "+now);
+            l("Score of " + sortedHand + " Returned " + now);
             return now;
         };
 

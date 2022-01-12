@@ -3,11 +3,13 @@ package test.jmj;
 import com.hhs.xgn.jmj.*;
 import com.hhs.xgn.jmj.scoring.AgariInfo;
 import com.hhs.xgn.jmj.scoring.HandDescriber;
+import com.hhs.xgn.jmj.scoring.Yaku;
 import com.hhs.xgn.jmj.scoring.classic.DefaultRuleset;
 import com.hhs.xgn.jmj.util.HandUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Test2 {
@@ -24,12 +26,12 @@ public class Test2 {
                 int t = Tiles.from(s.nextLine()).ordinal();
 
 
-                System.out.println("输入副露情况。输入End结束！s=顺子 k=刻子 K=杠子 dK=暗杠");
+                System.out.println("输入副露情况。输入E结束！s=顺子 k=刻子 K=杠子 dK=暗杠");
                 ArrayList<Mentsu> fuuro = new ArrayList<>();
                 ArrayList<Mentsu> dks = new ArrayList<>();
                 while (true) {
                     String id = s.next();
-                    if ("End".equalsIgnoreCase(id)) {
+                    if ("E".equalsIgnoreCase(id)) {
                         s.nextLine();
                         break;
                     }
@@ -56,7 +58,13 @@ public class Test2 {
                 DefaultRuleset ruleset = new DefaultRuleset();
                 HandDescriber desc = ruleset.describe(hd, t, dks.toArray(new Mentsu[0]), fuuro.toArray(new Mentsu[0]), new Tile[0], info);
 
-                System.out.println(desc.fu);
+                System.out.println("===========================");
+                System.out.println(desc.getHan()+"翻"+desc.fu+"符");
+                System.out.println("得点："+ruleset.score(desc,info));
+                for(Map.Entry<String, Integer> e:desc.yakus.entrySet()){
+                    System.out.println(ruleset.yakus.get(e.getKey()).displayName+" "+e.getValue()+"翻");
+                }
+                System.out.println("===========================");
             } catch (Exception e) {
                 e.printStackTrace();
             }

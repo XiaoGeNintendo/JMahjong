@@ -15,6 +15,9 @@ public abstract class Ruleset {
     public HashMap<String,Yaku> yakus=new HashMap<String, Yaku>();
 
     public void registerYaku(Yaku yaku){
+        if(yakus.containsKey(yaku.name)){
+            throw new IllegalStateException("Yaku already registered:"+yaku.name);
+        }
         yakus.put(yaku.name,yaku);
     }
 
