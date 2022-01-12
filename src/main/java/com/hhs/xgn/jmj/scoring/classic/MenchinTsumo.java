@@ -4,9 +4,9 @@ import com.hhs.xgn.jmj.RonWrapper;
 import com.hhs.xgn.jmj.scoring.AgariInfo;
 import com.hhs.xgn.jmj.scoring.Yaku;
 
-public class Riichi extends Yaku {
-    public Riichi() {
-        super("lz", "立直");
+public class MenchinTsumo extends Yaku {
+    public MenchinTsumo() {
+        super("mqzm", "門前清自摸和");
     }
 
     @Override
@@ -16,9 +16,10 @@ public class Riichi extends Yaku {
 
     @Override
     public int check(RonWrapper ron) {
-        if (ron.agariInfo.riichi == AgariInfo.Riichi.Riichi) {
+        boolean ok=ron.isMenchin() && ron.agariInfo.agariType == AgariInfo.AgariType.Tsumo;
+        if(ok){
             return 1;
-        } else {
+        }else{
             return 0;
         }
     }

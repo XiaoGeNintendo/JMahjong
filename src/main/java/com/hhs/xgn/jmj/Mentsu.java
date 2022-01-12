@@ -47,4 +47,18 @@ public class Mentsu {
         }
     }
 
+    /**
+     * Check whether given tile is in this mentsu
+     * @param t the id of the tile
+     * @return true if it is in the mentsu
+     */
+    public boolean contains(int t) {
+        if (type == Kotsu || type==Kantsu) {
+            return t == tile;
+        } else {
+            return t == tile ||
+                    t == Tiles.from(tile).getNextTile().ordinal() ||
+                    t == Tiles.from(tile).getNextTile().getNextTile().ordinal();
+        }
+    }
 }

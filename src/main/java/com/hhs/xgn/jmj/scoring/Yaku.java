@@ -12,6 +12,16 @@ public abstract class Yaku {
     }
 
     /**
+     * When this yaku is applied, ignore everything in this list <br/>
+     * It is recommended to remove same variants with the less value <br/>
+     * For example, ignoring riichi in W-Riichi.
+     * @return the ignored yaku
+     */
+    public String[] ignore(){
+        return new String[0];
+    }
+
+    /**
      * Mark this yaku as normal only. When a winning hand is not special, check function will not be called to prevent NPE.
      */
     public boolean isNormalOnly(){

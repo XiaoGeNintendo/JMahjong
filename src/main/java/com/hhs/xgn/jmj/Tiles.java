@@ -50,6 +50,11 @@ public enum Tiles {
         return new Tile(this.ordinal());
     }
 
+    @Override
+    public String toString() {
+        return utf;
+    }
+
     public boolean canFormShuntsu(){
         Tiles next=this.getNextTile();
         return next!=null && next.getNextTile()!=null;
@@ -57,6 +62,28 @@ public enum Tiles {
 
     public static Tiles from(int id) {
         return Tiles.values()[id];
+    }
+
+    public static Tiles from(String notation){
+        int delta=0;
+        switch(notation.charAt(1)){
+            case 'm':
+                delta=-1;
+                break;
+            case 'p':
+                delta=Tiles.OnePin.ordinal()-1;
+                break;
+            case 's':
+                delta=Tiles.OneSou.ordinal()-1;
+                break;
+            case 'z':
+                delta=Tiles.East.ordinal()-1;
+                break;
+            default:
+                throw new IllegalArgumentException("Unknown notation:"+notation);
+        }
+        delta+=notation.charAt(0)-'0';
+        return Tiles.values()[delta];
     }
 
     /**
@@ -73,5 +100,27 @@ public enum Tiles {
     Tiles(String utf, boolean next) {
         this.utf = utf;
         this.next = next;
+    }
+
+    /**
+     * @return true if it is 19m19p19s or not number tiles
+     */
+    public boolean isTerminal() {
+        return ordinal()>=Tiles.East.ordinal() || ordinal()%9==0 || ordinal()%9==8;
+    }
+
+    /**
+     * @return true if it is Red White or Green
+     */
+    public boolean isDragon() {
+        return ordinal()>=Tiles.White.ordinal() && ordinal()<=Tiles.Red.ordinal();
+    }
+
+    public boolean isWind(Wind w){
+        return ordinal()==w.ordinal()+Tiles.East.ordinal();
+    }
+
+    public boolean is1or7() {
+        return ordinal()%9==0 || ordinal()%9==6;
     }
 }

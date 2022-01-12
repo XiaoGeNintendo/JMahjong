@@ -138,14 +138,7 @@ public class HandUtil {
         return arr.toArray(new Integer[0]);
     }
 
-
-    /**
-     * Read a hand in format of <a href="https://tenhou.net/2/?">Tenhou</a>
-     *
-     * @param notation the notation string e.g. 123m406p789s12345z
-     * @return The hand from the notation
-     */
-    public static Hand fromNotation(String notation) {
+    public static Tile[] fromNotationRaw(String notation){
         int delta = -1;
 
         ArrayList<Tile> t = new ArrayList<>();
@@ -163,11 +156,24 @@ public class HandUtil {
             } else if (c == '0') {
                 t.add(Tiles.from(5 + delta).toTile().markRed());
             } else {
-                t.add(Tiles.from(c - '0' + delta).toTile().markRed());
+                t.add(Tiles.from(c - '0' + delta).toTile());
             }
         }
 
         Collections.reverse(t);
-        return new Hand(t.toArray(new Tile[0]));
+
+        return t.toArray(new Tile[0]);
     }
+
+    /**
+     * Read a hand in format of <a href="https://tenhou.net/2/?">Tenhou</a>
+     *
+     * @param notation the notation string e.g. 123m406p789s12345z
+     * @return The hand from the notation
+     */
+    public static Hand fromNotation(String notation) {
+
+        return new Hand(fromNotationRaw(notation));
+    }
+
 }
