@@ -56,6 +56,7 @@ public class Test2 {
                 AgariInfo info = new AgariInfo(AgariInfo.AgariType.Tsumo, AgariInfo.TileSource.Tsumo, false, Wind.East, Wind.South, new int[0]);
 
                 DefaultRuleset ruleset = new DefaultRuleset();
+                ruleset.isAotenjou=true;
                 HandDescriber desc = ruleset.describe(hd, t, dks.toArray(new Mentsu[0]), fuuro.toArray(new Mentsu[0]), new Tile[0], info);
 
                 System.out.println("===========================");
