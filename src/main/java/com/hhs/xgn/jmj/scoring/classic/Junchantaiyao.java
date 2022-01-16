@@ -35,6 +35,18 @@ public class Junchantaiyao extends Yaku {
             }
         }
 
+        boolean ok=false;
+        for(Tiles t:TileConstant.OneNineTile){
+            if(t.ordinal()==ron.sorted.head.tile){
+                ok=true;
+                break;
+            }
+        }
+
+        if(!ok){
+            return 0;
+        }
+
         for (Mentsu m : ron.ankans) {
             if (!check(m)) {
                 return 0;

@@ -4,6 +4,7 @@ import com.hhs.xgn.jmj.Mentsu;
 import com.hhs.xgn.jmj.RonWrapper;
 import com.hhs.xgn.jmj.Tiles;
 import com.hhs.xgn.jmj.scoring.Yaku;
+import com.hhs.xgn.jmj.util.JavaUtil;
 import com.hhs.xgn.jmj.util.TileConstant;
 
 public class Chantaiyao extends Yaku {
@@ -28,6 +29,18 @@ public class Chantaiyao extends Yaku {
             if (m!=null && !check(m)) {
                 return 0;
             }
+        }
+
+        boolean ok=false;
+        for(Tiles t:TileConstant.TerminalTile){
+            if(t.ordinal()==ron.sorted.head.tile){
+                ok=true;
+                break;
+            }
+        }
+
+        if(!ok){
+            return 0;
         }
 
         for (Mentsu m : ron.ankans) {

@@ -46,6 +46,10 @@ public class DefaultRuleset extends Ruleset {
         registerYaku(new Shousangen());
         registerYaku(new Toitoi());
         registerYaku(new WRiichi());
+        registerYaku(new Honitsu());
+        registerYaku(new Junchantaiyao());
+        registerYaku(new Ryanpeikou());
+        registerYaku(new Chinitsu());
     }
 
     private long roundUpTo100(long x) {
@@ -126,11 +130,11 @@ public class DefaultRuleset extends Ruleset {
 
             //ignore
             ArrayList<String> del = new ArrayList<>();
-            for (Map.Entry<String, Yaku> e : yakus.entrySet()) {
+            for (Map.Entry<String, Integer> e : now.yakus.entrySet()) {
                 del.addAll(Arrays.asList(yakus.get(e.getKey()).ignore()));
             }
             for (String s : del) {
-                yakus.remove(s);
+                now.yakus.remove(s);
             }
 
             //calculate fu
