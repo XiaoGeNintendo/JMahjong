@@ -31,4 +31,12 @@ public class TileConstant {
             Tiles.West,
             Tiles.North,
     };
+    public static Tiles[] OneNineTile=new Tiles[]{
+            Tiles.OneMan,
+            Tiles.NineMan,
+            Tiles.OnePin,
+            Tiles.NinePin,
+            Tiles.OneSou,
+            Tiles.NineSou
+    };
 }
