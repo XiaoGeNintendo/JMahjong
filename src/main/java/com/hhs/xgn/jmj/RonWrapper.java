@@ -16,14 +16,14 @@ public class RonWrapper {
      * Raw hand of 3n+1 tiles without last tile
      */
     public Hand raw;
-    public int lastTile;
+    public Tile lastTile;
     public Mentsu[] ankans;
     public Mentsu[] fuuro;
     public Tile[] other;
     public AgariInfo agariInfo;
     public Ruleset ruleset;
 
-    public RonWrapper(SortedHand sorted, Hand raw, int lastTile, Mentsu[] ankans, Mentsu[] fuuro, Tile[] other, AgariInfo agariInfo, Ruleset ruleset) {
+    public RonWrapper(SortedHand sorted, Hand raw, Tile lastTile, Mentsu[] ankans, Mentsu[] fuuro, Tile[] other, AgariInfo agariInfo, Ruleset ruleset) {
         this.sorted = sorted;
         this.raw = raw;
         this.lastTile = lastTile;
@@ -34,8 +34,8 @@ public class RonWrapper {
         this.ruleset = ruleset;
     }
 
-    public Tiles last(){
-        return Tiles.from(lastTile);
+    public Tile last(){
+        return lastTile;
     }
 
     public boolean isMenchin(){

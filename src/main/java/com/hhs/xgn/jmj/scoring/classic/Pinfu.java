@@ -36,11 +36,11 @@ public class Pinfu extends Yaku {
         Mentsu m = ron.sorted.mentsus[ron.sorted.lastTileIndicator];
         if (m.type == Mentsu.Shuntsu) {
             Tiles ti = Tiles.from(m.tile);
-            if (ti.getNextTile().ordinal() == ron.lastTile) {
+            if (ti.getNextTile().ordinal() == ron.lastTile.id) {
 //                System.out.println("A2");
                 return 0;
-            } else if (ti.ordinal() % 9 == 0 && ti.getNextTile().getNextTile().ordinal() == ron.lastTile ||
-                    ti.ordinal() % 9 == 6 && ti.ordinal() == ron.lastTile) {
+            } else if (ti.ordinal() % 9 == 0 && ti.getNextTile().getNextTile().ordinal() == ron.lastTile.id ||
+                    ti.ordinal() % 9 == 6 && ti.ordinal() == ron.lastTile.id) {
 //                System.out.println("A3");
                 return 0;
             }

@@ -17,7 +17,7 @@ public class DefaultRuleset extends Ruleset {
     public boolean isTanyaoMenchin;
     public boolean isAotenjou;
     /**
-     * Fu for 7-pairs or 13-orphans or pinfu
+     * Fu for 7-pairs or 13-orphans
      */
     public int specialFu = 25;
 
@@ -33,6 +33,8 @@ public class DefaultRuleset extends Ruleset {
         registerYaku(new Rinshan());
         registerYaku(new Tanyao());
         registerYaku(new Yakuhai());
+        registerYaku(new Dora());
+        registerYaku(new RedDora());
     }
 
     private long roundUpTo100(long x) {
@@ -75,8 +77,23 @@ public class DefaultRuleset extends Ruleset {
         System.out.println(s);
     }
 
+    /**
+     * @return true if a is better than b
+     */
+    private boolean better(HandDescriber a, HandDescriber b, AgariInfo agariInfo) {
+        long scoreA = score(a, agariInfo);
+        long scoreB = score(b, agariInfo);
+        if (scoreA > scoreB) {
+            return true;
+        }
+        if (scoreA < scoreB) {
+            return false;
+        }
+        return (a.yakumans.size() + a.yakus.size() > b.yakus.size() + b.yakumans.size());
+    }
+
     @Override
-    public HandDescriber describe(Hand hand, int lastTile, Mentsu[] ankan, Mentsu[] fuuro, Tile[] other, AgariInfo agariInfo) {
+    public HandDescriber describe(Hand hand, Tile lastTile, Mentsu[] ankan, Mentsu[] fuuro, Tile[] other, AgariInfo agariInfo) {
 
         Solve solver = (SortedHand sortedHand, boolean special) -> {
             //calculate yakus
@@ -195,12 +212,12 @@ public class DefaultRuleset extends Ruleset {
                     Mentsu m = sortedHand.mentsus[sortedHand.lastTileIndicator];
                     if (m.type == Mentsu.Shuntsu) {
                         Tiles ti = Tiles.from(m.tile);
-                        if (ti.getNextTile().ordinal() == lastTile) {
+                        if (ti.getNextTile().ordinal() == lastTile.id) {
                             //中张
                             l("zz2f");
                             fu += 2;
-                        } else if (ti.ordinal() % 9 == 0 && ti.getNextTile().getNextTile().ordinal() == lastTile ||
-                                ti.ordinal() % 9 == 6 && ti.ordinal() == lastTile) {
+                        } else if (ti.ordinal() % 9 == 0 && ti.getNextTile().getNextTile().ordinal() == lastTile.id ||
+                                ti.ordinal() % 9 == 6 && ti.ordinal() == lastTile.id) {
                             //边张
                             l("bz2f");
                             fu += 2;
@@ -237,7 +254,7 @@ public class DefaultRuleset extends Ruleset {
         };
 
         int[] cnt = hand.toCountArray();
-        cnt[lastTile]++;
+        cnt[lastTile.id]++;
         SortedHand[] breakdown = HandUtil.breakdown(cnt);
 
         HandDescriber best = new HandDescriber();
@@ -247,7 +264,7 @@ public class DefaultRuleset extends Ruleset {
 
             HandDescriber now = solver.solve(null, true);
 
-            if (score(now, agariInfo) > score(best, agariInfo)) {
+            if (better(now, best, agariInfo)) {
                 best = now;
             }
         }
@@ -256,23 +273,23 @@ public class DefaultRuleset extends Ruleset {
         //break down hand
         for (SortedHand sorted : breakdown) {
             for (int i = 0; i < 4; i++) { //mentsu last tile
-                if (sorted.mentsus[i] != null && sorted.mentsus[i].contains(lastTile)) {
+                if (sorted.mentsus[i] != null && sorted.mentsus[i].contains(lastTile.id)) {
                     sorted.lastTileIndicator = i;
 
                     HandDescriber now = solver.solve(sorted, false);
 
-                    if (score(now, agariInfo) > score(best, agariInfo)) {
+                    if (better(now, best, agariInfo)) {
                         best = now;
                     }
                 }
             }
 
-            if (sorted.head.tile == lastTile) { //hand last tile
+            if (sorted.head.tile == lastTile.id) { //hand last tile
                 sorted.lastTileIndicator = 4;
 
                 HandDescriber now = solver.solve(sorted, false);
 
-                if (score(now, agariInfo) > score(best, agariInfo)) {
+                if (better(now, best, agariInfo)) {
                     best = now;
                 }
             }

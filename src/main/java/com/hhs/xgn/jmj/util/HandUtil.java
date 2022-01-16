@@ -75,8 +75,10 @@ public class HandUtil {
 
     /**
      * Returns all possible breakdown for the count array.
-     * The count array must represent a ron-able 3n+2 hand containing no more than 4 Mentsu and a head.
+     * The count array must represent a ron-able 3n+2 hand containing no more than 4 Mentsu and a head. <br/>
      *
+     * <b>Note: this method does NOT include red dora information as being seen in the parameters!
+     * Do not expect generated Mentsu has a redDora field with true values</b>
      * @param countArr count array of the hand
      * @return all breakdown or an empty array if it is invalid
      * @throws com.hhs.xgn.jmj.exception.HandTileCountException given count array is not 3n+2 style
@@ -176,4 +178,14 @@ public class HandUtil {
         return new Hand(fromNotationRaw(notation));
     }
 
+    /**
+     * Discard dora information and generate an array of id from the tile array
+     */
+    public static int[] toIntArray(Tile[] t) {
+        int[] it=new int[t.length];
+        for(int i=0;i<t.length;i++){
+            it[i]=t[i].id;
+        }
+        return it;
+    }
 }

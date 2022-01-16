@@ -51,13 +51,18 @@ public class Test2 {
                     }
                 }
 
+                System.out.println("输入宝牌：");
+                Tile[] dora=HandUtil.fromNotationRaw(s.nextLine());
+
                 System.out.println(hd + "<==自摸==" + Tiles.from(t));
                 System.out.println("暗刻:"+dks+" 副露："+fuuro);
-                AgariInfo info = new AgariInfo(AgariInfo.AgariType.Tsumo, AgariInfo.TileSource.Tsumo, false, Wind.East, Wind.South, new int[0]);
+                System.out.println("宝牌:"+Arrays.toString(dora));
+
+                AgariInfo info = new AgariInfo(AgariInfo.AgariType.Tsumo, AgariInfo.TileSource.Tsumo, false, Wind.East, Wind.East, HandUtil.toIntArray(dora));
 
                 DefaultRuleset ruleset = new DefaultRuleset();
-                ruleset.isAotenjou=true;
-                HandDescriber desc = ruleset.describe(hd, t, dks.toArray(new Mentsu[0]), fuuro.toArray(new Mentsu[0]), new Tile[0], info);
+//                ruleset.isAotenjou=true;
+                HandDescriber desc = ruleset.describe(hd, new Tile(t), dks.toArray(new Mentsu[0]), fuuro.toArray(new Mentsu[0]), new Tile[0], info);
 
                 System.out.println("===========================");
                 System.out.println(desc.getHan()+"翻"+desc.fu+"符");

@@ -37,4 +37,8 @@ public class Tile {
         this.id = id;
         this.red = red;
     }
+
+    public Tile cpy() {
+        return new Tile(this.id, this.red);
+    }
 }

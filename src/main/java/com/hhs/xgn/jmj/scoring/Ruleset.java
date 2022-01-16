@@ -33,5 +33,5 @@ public abstract class Ruleset {
      * @param agariInfo Agari Information
      * @return The hand describer
      */
-    public abstract HandDescriber describe(Hand hand, int lastTile, Mentsu[] ankan, Mentsu[] fuuro, Tile[] other, AgariInfo agariInfo);
+    public abstract HandDescriber describe(Hand hand, Tile lastTile, Mentsu[] ankan, Mentsu[] fuuro, Tile[] other, AgariInfo agariInfo);
 }

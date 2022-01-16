@@ -17,6 +17,11 @@ public class Mentsu {
     public int tile;
     public int type;
 
+    /**
+     * Whether each tile is a red dora. Shuntsus are sorted from small to big
+     */
+    public boolean[] redDora=new boolean[4];
+
     public Mentsu cpy() {
         return new Mentsu(tile, type);
     }
@@ -31,6 +36,32 @@ public class Mentsu {
 
     public Mentsu(Tiles tile, int type) {
         new Mentsu(tile.ordinal(), type);
+    }
+
+    /**
+     * @return all the tiles in this mentsu
+     */
+    public Tile[] toTiles(){
+        Tiles ts=Tiles.from(tile);
+        Tile t0=new Tile(ts.ordinal(),redDora[0]);
+        if(type==Shuntsu){
+            Tile t1=new Tile(ts.getNextTile().ordinal(),redDora[1]);
+            Tile t2=new Tile(ts.getNextTile().getNextTile().ordinal(),redDora[2]);
+            return new Tile[]{t0,t1,t2};
+        }else if(type==Kotsu){
+            Tile t1=new Tile(ts.ordinal(),redDora[1]);
+            Tile t2=new Tile(ts.ordinal(),redDora[2]);
+
+            return new Tile[]{t0,t1,t2};
+        }else if(type==Kantsu){
+            Tile t1=new Tile(ts.ordinal(),redDora[1]);
+            Tile t2=new Tile(ts.ordinal(),redDora[2]);
+            Tile t3=new Tile(ts.ordinal(),redDora[3]);
+
+            return new Tile[]{t0,t1,t2,t3};
+        }else{
+            throw new IllegalStateException("Unknown Mentsu type:"+type);
+        }
     }
 
     @Override
