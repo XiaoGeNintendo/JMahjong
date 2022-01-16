@@ -18,7 +18,10 @@ public class Honroutou extends Yaku {
         return false;
     }
 
-
+    @Override
+    public String[] ignore() {
+        return new String[]{"hqdyj","qqdyj"};
+    }
 
     @Override
     public int check(RonWrapper ron) {

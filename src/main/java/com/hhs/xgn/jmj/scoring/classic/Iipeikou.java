@@ -28,7 +28,7 @@ public class Iipeikou extends Yaku {
                 if(ron.sorted.mentsus[j].type!=Mentsu.Shuntsu){
                     continue;
                 }
-                if(ron.sorted.mentsus[i].type==ron.sorted.mentsus[j].type){
+                if(ron.sorted.mentsus[i].tile==ron.sorted.mentsus[j].tile){
                     return 1;
                 }
             }

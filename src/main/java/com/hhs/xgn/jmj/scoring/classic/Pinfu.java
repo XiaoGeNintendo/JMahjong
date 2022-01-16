@@ -33,6 +33,10 @@ public class Pinfu extends Yaku {
             return 0;
         }
 
+        if (ron.sorted.lastTileIndicator >= 4) {
+            return 0;
+        }
+
         Mentsu m = ron.sorted.mentsus[ron.sorted.lastTileIndicator];
         if (m.type == Mentsu.Shuntsu) {
             Tiles ti = Tiles.from(m.tile);

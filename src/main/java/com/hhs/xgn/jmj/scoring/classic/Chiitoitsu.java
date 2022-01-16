@@ -19,7 +19,7 @@ public class Chiitoitsu extends Yaku {
 
     @Override
     public int check(RonWrapper ron) {
-        if(!ron.isMenchin() || ron.ankans.length>0){
+        if(!ron.isMenchin() || ron.ankans.length>0 || ron.sorted!=null){
             return 0;
         }
 
