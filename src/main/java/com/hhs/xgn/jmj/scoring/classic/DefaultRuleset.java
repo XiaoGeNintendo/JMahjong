@@ -87,14 +87,18 @@ public class DefaultRuleset extends Ruleset {
                 if (!special || !yaku.getValue().isNormalOnly()) {
                     int score = yaku.getValue().check(wrapper);
                     if (score > 0) {
-                        now.yakus.put(yaku.getKey(), score);
+                        if (yaku.getValue().isYakuman()) {
+                            now.yakumans.put(yaku.getKey(), score);
+                        } else {
+                            now.yakus.put(yaku.getKey(), score);
+                        }
                     }
                 }
             }
 
             //ignore
             ArrayList<String> del = new ArrayList<>();
-            for (Map.Entry<String,Yaku> e : yakus.entrySet()) {
+            for (Map.Entry<String, Yaku> e : yakus.entrySet()) {
                 del.addAll(Arrays.asList(yakus.get(e.getKey()).ignore()));
             }
             for (String s : del) {

@@ -12,31 +12,36 @@ public class Yakuhai extends Yaku {
     }
 
 
-    private boolean wanted(int x,RonWrapper wrapper){
+    private int wanted(int x,RonWrapper wrapper){
         Tiles t=Tiles.from(x);
-        return t.isWind(wrapper.agariInfo.prevalantWind) || t.isWind((wrapper.agariInfo.seatWind))
-                || t.isDragon();
+        int y=0;
+        if(t.isWind(wrapper.agariInfo.prevalantWind)){
+            y++;
+        }
+        if(t.isWind((wrapper.agariInfo.seatWind))){
+            y++;
+        }
+        if(t.isDragon()){
+            y++;
+        }
+
+        return y;
     }
 
     @Override
     public int check(RonWrapper ron) {
         int s=0;
         for (int i = 0; i < 4; i++) {
-            if (ron.sorted.mentsus[i] != null &&
-                    wanted(ron.sorted.mentsus[i].tile,ron)){
-                s++;
+            if (ron.sorted.mentsus[i] != null){
+                s+=wanted(ron.sorted.mentsus[i].tile,ron);
             }
         }
 
         for(Mentsu m: ron.ankans){
-            if(wanted(m.tile,ron)){
-                s++;
-            }
+            s+=wanted(m.tile,ron);
         }
         for(Mentsu m:ron.fuuro){
-            if(wanted(m.tile,ron)){
-                s++;
-            }
+            s+=wanted(m.tile,ron); //ensured that terminal tiles cannot form shuntsu
         }
 
         return s;
