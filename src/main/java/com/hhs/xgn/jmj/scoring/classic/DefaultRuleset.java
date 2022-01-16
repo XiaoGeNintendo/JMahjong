@@ -35,6 +35,17 @@ public class DefaultRuleset extends Ruleset {
         registerYaku(new Yakuhai());
         registerYaku(new Dora());
         registerYaku(new RedDora());
+        registerYaku(new Chantaiyao());
+        registerYaku(new Chiitoitsu());
+        registerYaku(new Honroutou());
+        registerYaku(new Ittsu());
+        registerYaku(new Sanankou());
+        registerYaku(new Sankantsu());
+        registerYaku(new SanshokuDouKou());
+        registerYaku(new Sanshoku());
+        registerYaku(new Shousangen());
+        registerYaku(new Toitoi());
+        registerYaku(new WRiichi());
     }
 
     private long roundUpTo100(long x) {
