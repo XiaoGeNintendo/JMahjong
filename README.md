@@ -14,7 +14,8 @@ This is also a self-use library for my future projects.
 -   Extensive enough to build custom dora tiles(like 花鳥), custom yakus and even custom scoring.
 -   All yakus on [riichi.wiki](https://riichi.wiki/List_of_yaku) (except for 流し満貫) are supported
 -   An ~~not-so-good~~ English documentation and Javadoc
- 
+-   Complete Shanten calculation
+
 ## Disadvantages
 Well, I hate telling others what we have without telling them what we don't have.
 -   Author is Chinese. You can expect Chinglish everywhere.
@@ -27,8 +28,6 @@ Well, I hate telling others what we have without telling them what we don't have
 
 Please refer to the WIP Github [wiki]()...
 
-## Future Plans
--   Shanten Calculation
 ## Links
 [Mahjong4j](https://github.com/mahjong4j/mahjong4j)
 

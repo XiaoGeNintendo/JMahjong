@@ -11,6 +11,7 @@ public abstract class Yaku {
         this.displayName = displayName;
     }
 
+
     /**
      * When this yaku is applied, ignore everything in this list <br>
      * It is recommended to remove same variants with the less value <br>
@@ -30,6 +31,15 @@ public abstract class Yaku {
 
     public boolean isYakuman(){
         return false;
+    }
+
+    /**
+     * Return a custom shanten for this yaku.
+     * @param cntArray the count array of the given 3n+2 hand
+     * @return the custom shanten or -2 for not applied. 0 = tenpai, -1 = ron
+     */
+    public int getCustomShanten(int[] cntArray){
+        return -2;
     }
 
     /**

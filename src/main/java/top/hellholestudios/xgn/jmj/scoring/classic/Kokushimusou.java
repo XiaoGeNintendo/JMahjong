@@ -3,7 +3,7 @@ package top.hellholestudios.xgn.jmj.scoring.classic;
 import top.hellholestudios.xgn.jmj.RonWrapper;
 import top.hellholestudios.xgn.jmj.Tiles;
 import top.hellholestudios.xgn.jmj.scoring.Yaku;
-import top.hellholestudios.xgn.jmj.util.TileConstants;
+import top.hellholestudios.xgn.jmj.util.JavaUtil;
 
 public class Kokushimusou extends Yaku {
     public Kokushimusou() {
@@ -21,6 +21,31 @@ public class Kokushimusou extends Yaku {
     }
 
     @Override
+    public int getCustomShanten(int[] cntArray) {
+        int on=0;
+        boolean two=false;
+        for(int i=0;i<Tiles.values().length;i++){
+            if(Tiles.from(i).isTerminal()){
+                if(cntArray[i]>=2){
+                    if(two){
+                        on+=cntArray[i]-1;
+                    }else{
+                        on+=cntArray[i]-2;
+                        two=true;
+                    }
+                }
+            }else{
+                on+=cntArray[i];
+            }
+        }
+        return on-1+14-JavaUtil.sum(cntArray);
+    }
+
+    public boolean check(int[] cnt){
+        return getCustomShanten(cnt)==-1;
+    }
+
+    @Override
     public int check(RonWrapper ron) {
         if (!ron.isMenchin() || ron.ankans.length != 0) {
             return 0;
@@ -29,22 +54,9 @@ public class Kokushimusou extends Yaku {
         int[] cnt = ron.raw.toCountArray();
         cnt[ron.lastTile.id]++;
 
-        boolean two = false;
-
-        for (Tiles t : TileConstants.TerminalTile) {
-            if (cnt[t.ordinal()] == 2) {
-                if (two) {
-                    return 0;
-                }
-                two = true;
-            } else if (cnt[t.ordinal()] != 1) {
-                return 0;
-            }
-        }
-
-        if (two) {
+        if(check(cnt)){
             return 13;
-        } else {
+        }else{
             return 0;
         }
     }

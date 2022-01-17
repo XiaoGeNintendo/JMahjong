@@ -1,8 +1,6 @@
 package top.hellholestudios.xgn.jmj.scoring.classic;
 
 import top.hellholestudios.xgn.jmj.RonWrapper;
-import top.hellholestudios.xgn.jmj.Tile;
-import top.hellholestudios.xgn.jmj.Tiles;
 import top.hellholestudios.xgn.jmj.scoring.Yaku;
 
 public class Chiitoitsu extends Yaku {
@@ -16,23 +14,35 @@ public class Chiitoitsu extends Yaku {
     }
 
     @Override
+    public int getCustomShanten(int[] cntArray) {
+
+        int dz=0;
+        for(int i:cntArray){
+            if(i>=2){
+                dz++;
+            }
+        }
+
+        return 6-dz;
+    }
+
+    public boolean check(int[] count){
+        return getCustomShanten(count)==-1;
+    }
+
+    @Override
     public int check(RonWrapper ron) {
         if(!ron.isMenchin() || ron.ankans.length>0 || ron.sorted!=null){
             return 0;
         }
 
-        int[] count=new int[Tiles.values().length];
-
-        for(Tile t: ron.raw.getTiles()){
-            count[t.id]++;
-        }
+        int[] count=ron.raw.toCountArray();
         count[ron.lastTile.id]++;
 
-        for(int i=0;i<Tiles.values().length;i++){
-            if(count[i]!=0 && count[i]!=2){
-                return 0;
-            }
+        if(check(count)){
+            return 2;
+        }else{
+            return 0;
         }
-        return 2;
     }
 }
