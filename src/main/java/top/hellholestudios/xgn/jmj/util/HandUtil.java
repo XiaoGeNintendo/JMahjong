@@ -179,4 +179,58 @@ public class HandUtil {
         }
         return it;
     }
+
+    /**
+     * Parse a mentsu from the given tiles maintaining dora data
+     * @param tiles the given tiles
+     * @return the mentsu with proper dora data
+     */
+    public static Mentsu toMentsu(Tile[] tiles){
+
+        Tile[] nw=new Tile[tiles.length];
+        System.arraycopy(tiles, 0, nw, 0, tiles.length);
+
+        for(int i=0;i<nw.length;i++){
+            for(int j=i+1;j<nw.length;j++){
+                if(nw[i].id>nw[j].id){
+                    var tmp=nw[i];
+                    nw[i]=nw[j];
+                    nw[j]=tmp;
+                }
+            }
+        }
+
+        if(tiles.length!=3 && tiles.length!=4){
+            throw new HandTileCountException("Mentsu size should be 3 or 4 but not "+tiles.length);
+        }
+        if(tiles.length==4){
+            if(nw[0].id==nw[3].id){
+                var m=new Mentsu(nw[0].id,Mentsu.Kantsu);
+                for(int i=0;i<4;i++){
+                    m.redDora[i]=nw[i].red;
+                }
+                return m;
+            }else{
+                throw new IllegalStateException("Mentsu cannot form a Kantsu");
+            }
+        }else{
+            if(nw[0].id==nw[2].id){
+                var m=new Mentsu(nw[0].id,Mentsu.Kotsu);
+                for(int i=0;i<3;i++){
+                    m.redDora[i]=nw[i].red;
+                }
+                return m;
+            }else{
+                if(nw[2].id-nw[0].id==2){
+                    var m=new Mentsu(nw[0].id,Mentsu.Shuntsu);
+                    for(int i=0;i<3;i++){
+                        m.redDora[i]=nw[i].red;
+                    }
+                    return m;
+                }else{
+                    throw new IllegalStateException("Mentsu cannot form a Kotsu or Shuntsu");
+                }
+            }
+        }
+    }
 }
