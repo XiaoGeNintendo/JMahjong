@@ -1,5 +1,5 @@
 # JMahjong
- An easy-to-use, extensive Mahjong library for JVM languages
+(Aims to be) an easy-to-use, extensive Mahjong library for JVM languages
 ## Motivation
 JMahjong is born with the intention to provide an alternative to the most popular Java Japanese Mahjong library [Mahjong4j](https://github.com/mahjong4j/mahjong4j).
 
