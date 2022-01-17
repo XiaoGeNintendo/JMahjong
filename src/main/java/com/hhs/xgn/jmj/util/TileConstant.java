@@ -31,12 +31,21 @@ public class TileConstant {
             Tiles.West,
             Tiles.North,
     };
-    public static Tiles[] OneNineTile=new Tiles[]{
+    public static final Tiles[] OneNineTile=new Tiles[]{
             Tiles.OneMan,
             Tiles.NineMan,
             Tiles.OnePin,
             Tiles.NinePin,
             Tiles.OneSou,
             Tiles.NineSou
+    };
+
+    public static final Tiles[] GreenTiles=new Tiles[]{
+            Tiles.TwoSou,
+            Tiles.ThreeSou,
+            Tiles.FourSou,
+            Tiles.SixSou,
+            Tiles.EightSou,
+            Tiles.Green
     };
 }

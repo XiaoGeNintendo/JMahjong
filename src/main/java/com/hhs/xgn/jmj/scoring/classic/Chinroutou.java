@@ -5,54 +5,45 @@ import com.hhs.xgn.jmj.RonWrapper;
 import com.hhs.xgn.jmj.Tile;
 import com.hhs.xgn.jmj.Tiles;
 import com.hhs.xgn.jmj.scoring.Yaku;
-import com.hhs.xgn.jmj.util.TileConstant;
 
-public class Honroutou extends Yaku {
-    public Honroutou() {
-        super("hlt", "混老頭");
+public class Chinroutou extends Yaku {
+    public Chinroutou() {
+        super("qlt", "清老頭");
     }
 
 
     @Override
-    public boolean isNormalOnly() {
-        return false;
+    public boolean isYakuman() {
+        return true;
     }
 
     @Override
     public String[] ignore() {
-        return new String[]{"hqdyj","cqdyj"};
+        return new String[]{"hqdyj","cqdyj","hlt"};
     }
 
     @Override
     public int check(RonWrapper ron) {
-
-        if(ron.sorted==null){
-            //must be chiitoitsu
-            if(new Chiitoitsu().check(ron)==0){
-                return 0;
-            }
-        }
-
         for(Tile t:ron.raw.getTiles()){
-            if(!Tiles.from(t.id).isTerminal()){
+            if(!Tiles.from(t.id).isOneNine()){
                 return 0;
             }
         }
 
-        if(!Tiles.from(ron.lastTile.id).isTerminal()){
+        if(!Tiles.from(ron.lastTile.id).isOneNine()){
             return 0;
         }
 
         for(Mentsu m:ron.ankans){
             for(Tile t:m.toTiles()){
-                if(!Tiles.from(t.id).isTerminal()){
+                if(!Tiles.from(t.id).isOneNine()){
                     return 0;
                 }
             }
         }
         for(Mentsu m:ron.fuuro){
             for(Tile t:m.toTiles()){
-                if(!Tiles.from(t.id).isTerminal()){
+                if(!Tiles.from(t.id).isOneNine()){
                     return 0;
                 }
             }

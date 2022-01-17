@@ -52,18 +52,20 @@ public class AgariInfo {
 
     public Riichi riichi = Riichi.NoRiichi;
     public boolean ippatsu;
-    public boolean dealer;
     public Wind prevalantWind;
     public Wind seatWind;
     public int[] doras;
 
-    public AgariInfo(AgariType agariType, TileSource source, boolean dealer, Wind prevalentWind, Wind seatWind, int[] doras) {
+    public AgariInfo(AgariType agariType, TileSource source, Wind prevalentWind, Wind seatWind, int[] doras) {
         this.agariType = agariType;
         this.source = source;
-        this.dealer = dealer;
         this.prevalantWind = prevalentWind;
         this.seatWind = seatWind;
         this.doras = doras;
+    }
+
+    public boolean isDealer(){
+        return seatWind==Wind.East;
     }
 
     public AgariInfo markRiichi(){

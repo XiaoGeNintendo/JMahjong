@@ -4,11 +4,21 @@ import com.hhs.xgn.jmj.Mentsu;
 import com.hhs.xgn.jmj.RonWrapper;
 import com.hhs.xgn.jmj.scoring.Yaku;
 
-public class Sanankou extends Yaku {
-    public Sanankou() {
-        super("3ak", "三暗刻");
+public class SuuankouDQ extends Yaku {
+    public SuuankouDQ() {
+        super("4akdq", "四暗刻単騎");
     }
 
+
+    @Override
+    public String[] ignore() {
+        return new String[]{"3ak","4ak","ddh"};
+    }
+
+    @Override
+    public boolean isYakuman() {
+        return true;
+    }
 
     @Override
     public int check(RonWrapper ron) {
@@ -18,8 +28,8 @@ public class Sanankou extends Yaku {
                 c++;
             }
         }
-        if (c == 3) {
-            return 2;
+        if (c == 4 && ron.sorted.lastTileIndicator==4) {
+            return 26;
         } else {
             return 0;
         }

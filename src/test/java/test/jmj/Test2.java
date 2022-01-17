@@ -59,7 +59,7 @@ public class Test2 {
 //                System.out.println("宝牌:"+Arrays.toString(dora));
 
 //                AgariInfo info = new AgariInfo(AgariInfo.AgariType.Tsumo, AgariInfo.TileSource.Tsumo, false, Wind.East, Wind.East, HandUtil.toIntArray(dora));
-                AgariInfo info = new AgariInfo(AgariInfo.AgariType.Tsumo, AgariInfo.TileSource.Tsumo, false, Wind.East, Wind.East, new int[0]);
+                AgariInfo info = new AgariInfo(AgariInfo.AgariType.Tsumo, AgariInfo.TileSource.Tsumo, Wind.East, Wind.East, new int[0]);
                 DefaultRuleset ruleset = new DefaultRuleset();
 //                ruleset.isAotenjou=true;
                 HandDescriber desc = ruleset.describe(hd, new Tile(t), dks.toArray(new Mentsu[0]), fuuro.toArray(new Mentsu[0]), new Tile[0], info);

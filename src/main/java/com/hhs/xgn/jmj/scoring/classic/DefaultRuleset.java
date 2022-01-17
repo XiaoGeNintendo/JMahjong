@@ -22,6 +22,7 @@ public class DefaultRuleset extends Ruleset {
     public int specialFu = 25;
 
     public DefaultRuleset() {
+        //lv1
         registerYaku(new Riichi());
         registerYaku(new Chankan());
         registerYaku(new Haitei());
@@ -33,8 +34,12 @@ public class DefaultRuleset extends Ruleset {
         registerYaku(new Rinshan());
         registerYaku(new Tanyao());
         registerYaku(new Yakuhai());
+
+        //dora
         registerYaku(new Dora());
         registerYaku(new RedDora());
+
+        //lv2
         registerYaku(new Chantaiyao());
         registerYaku(new Chiitoitsu());
         registerYaku(new Honroutou());
@@ -46,10 +51,29 @@ public class DefaultRuleset extends Ruleset {
         registerYaku(new Shousangen());
         registerYaku(new Toitoi());
         registerYaku(new WRiichi());
+
+        //lv3-6
         registerYaku(new Honitsu());
         registerYaku(new Junchantaiyao());
         registerYaku(new Ryanpeikou());
         registerYaku(new Chinitsu());
+
+        //yakuman
+        registerYaku(new Chiihou());
+        registerYaku(new Chinroutou());
+        registerYaku(new CPoutou());
+        registerYaku(new Daisangen());
+        registerYaku(new Daisuushii());
+        registerYaku(new Kokushimusou());
+        registerYaku(new Kokushimusou13());
+        registerYaku(new Poutou());
+        registerYaku(new Ryuuiisou());
+        registerYaku(new Shousuushii());
+        registerYaku(new Suuankou());
+        registerYaku(new SuuankouDQ());
+        registerYaku(new Suukantsu());
+        registerYaku(new Tenhou());
+        registerYaku(new Tsuuiisou());
     }
 
     private long roundUpTo100(long x) {
@@ -77,7 +101,7 @@ public class DefaultRuleset extends Ruleset {
             }
         }
 
-        if (agariInfo.dealer) {
+        if (agariInfo.isDealer()) {
             return roundUpTo100(a * 6);
         } else {
             return roundUpTo100(a * 4);
