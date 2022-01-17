@@ -15,6 +15,7 @@ This is also a self-use library for my future projects.
 -   All yakus on [riichi.wiki](https://riichi.wiki/List_of_yaku) (except for 流し満貫) are supported
 -   An ~~not-so-good~~ English documentation and Javadoc
 -   Complete Shanten calculation
+-   Suggestion according to tile efficiency
 
 ## Disadvantages
 Well, I hate telling others what we have without telling them what we don't have.

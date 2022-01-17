@@ -4,14 +4,20 @@ import top.hellholestudios.xgn.jmj.Hand;
 import top.hellholestudios.xgn.jmj.ShantenCalculator;
 import top.hellholestudios.xgn.jmj.Suggestion;
 import top.hellholestudios.xgn.jmj.Tiles;
+import top.hellholestudios.xgn.jmj.scoring.Yaku;
 import top.hellholestudios.xgn.jmj.scoring.classic.DefaultRuleset;
 import top.hellholestudios.xgn.jmj.util.HandUtil;
 
+import java.util.Map;
 import java.util.Scanner;
 
 public class Test3 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
+        for(Map.Entry<String, Yaku> x:new DefaultRuleset().yakus.entrySet()){
+            System.out.println(x.getKey()+" "+x.getValue().displayName);
+        }
 
         while (true) {
             Hand hd = HandUtil.fromNotation(sc.nextLine());
