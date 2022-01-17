@@ -49,6 +49,6 @@ public class Chinroutou extends Yaku {
             }
         }
 
-        return 2;
+        return 13;
     }
 }

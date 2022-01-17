@@ -90,14 +90,14 @@ public class DefaultRuleset extends Ruleset {
         long a;
 
         if (isAotenjou) {
-            a = describer.fu * (1L << (describer.getHan() + 13 * describer.getYakumanHan() + 2));
+            a = describer.fu * (1L << (describer.getHan() + 2));
         } else {
             if (describer.hasYakuman()) {
                 a = 8000L * describer.getYakumanHan();
             } else if (describer.getHan() >= 5) {
                 a = new int[]{2000, 3000, 3000, 4000, 4000, 4000, 6000, 6000, 8000}[(int) (Math.min(13, describer.getHan()) - 5)];
             } else {
-                a = Math.min(2000, describer.fu * (1L << (describer.getHan() + 13 * describer.getYakumanHan() + 2)));
+                a = Math.min(2000, describer.fu * (1L << (describer.getHan() + 2)));
             }
         }
 
@@ -157,9 +157,14 @@ public class DefaultRuleset extends Ruleset {
             for (Map.Entry<String, Integer> e : now.yakus.entrySet()) {
                 del.addAll(Arrays.asList(yakus.get(e.getKey()).ignore()));
             }
+            for (Map.Entry<String, Integer> e : now.yakumans.entrySet()) {
+                del.addAll(Arrays.asList(yakus.get(e.getKey()).ignore()));
+            }
             for (String s : del) {
                 now.yakus.remove(s);
+                now.yakumans.remove(s);
             }
+
 
             //calculate fu
             if (special) {
@@ -276,7 +281,7 @@ public class DefaultRuleset extends Ruleset {
                 }
 
                 //lastly if 20fu 1fan
-                if (!now.hasYakuman() && now.getHan() == 1) {
+                if (now.getHan() == 1) {
                     fu = Math.max(fu, 30);
                 }
 

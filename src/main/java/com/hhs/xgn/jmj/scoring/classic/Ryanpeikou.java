@@ -17,7 +17,7 @@ public class Ryanpeikou extends Yaku {
 
     @Override
     public int check(RonWrapper ron) {
-        if (!ron.isMenchin()) {
+        if (!ron.isMenchin() || ron.ankans.length!=0) {
             return 0;
         }
 

@@ -16,7 +16,8 @@ public class AgariInfo {
          */
         Rinshan,
         /**
-         * Normal Tsumo
+         * Normal Tsumo <br/>
+         * <b>Special Note: To check if a player wins by tsumo, please use isTsumoFamily</b>
          */
         Tsumo,
         /**
@@ -38,7 +39,15 @@ public class AgariInfo {
         /**
          * Tsumo but in first turn
          */
-        FirstTsumo
+        FirstTsumo;
+
+        /**
+         *
+         * @return true if it is FirstTsumo, Haitei, Rinshan or Tsumo
+         */
+        public boolean isTsumoFamily() {
+            return this==FirstTsumo || this==Haitei || this==Rinshan || this==Tsumo;
+        }
     }
 
     public enum Riichi {

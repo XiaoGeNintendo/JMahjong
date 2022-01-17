@@ -69,6 +69,9 @@ public class Test2 {
                 System.out.println("得点："+ruleset.score(desc,info));
 //                System.out.println(ruleset.yakus);
 
+                for(Map.Entry<String, Integer> e:desc.yakumans.entrySet()){
+                    System.out.println(ruleset.yakus.get(e.getKey()).displayName+" "+e.getValue()/13+"倍役满");
+                }
                 for(Map.Entry<String, Integer> e:desc.yakus.entrySet()){
                     System.out.println(ruleset.yakus.get(e.getKey()).displayName+" "+e.getValue()+"翻");
                 }

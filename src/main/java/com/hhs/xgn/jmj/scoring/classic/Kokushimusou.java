@@ -24,33 +24,29 @@ public class Kokushimusou extends Yaku {
 
     @Override
     public int check(RonWrapper ron) {
-        if(!ron.isMenchin() || ron.ankans.length!=0){
+        if (!ron.isMenchin() || ron.ankans.length != 0) {
             return 0;
         }
 
-        int[] cnt=ron.raw.toCountArray();
+        int[] cnt = ron.raw.toCountArray();
         cnt[ron.lastTile.id]++;
 
-        boolean two=false,zero=false;
+        boolean two = false;
 
-        for(Tiles t: TileConstant.TerminalTile) {
+        for (Tiles t : TileConstant.TerminalTile) {
             if (cnt[t.ordinal()] == 2) {
                 if (two) {
                     return 0;
                 }
                 two = true;
-            }
-            if (cnt[t.ordinal()] == 0) {
-                if (zero) {
-                    return 0;
-                }
-                zero = true;
+            } else if (cnt[t.ordinal()] != 1) {
+                return 0;
             }
         }
 
-        if(two && zero){
+        if (two) {
             return 13;
-        }else{
+        } else {
             return 0;
         }
     }

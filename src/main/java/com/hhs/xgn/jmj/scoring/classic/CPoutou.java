@@ -10,6 +10,11 @@ public class CPoutou extends Yaku {
 
 
     @Override
+    public String[] ignore() {
+        return new String[]{"jlbd","qys"};
+    }
+
+    @Override
     public boolean isYakuman() {
         return true;
     }

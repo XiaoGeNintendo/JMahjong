@@ -14,10 +14,15 @@ public class Sanankou extends Yaku {
     public int check(RonWrapper ron) {
         int c = 0;
         for (int i = 0; i < 4; i++) {
-            if (ron.sorted.mentsus[i]!=null && ron.sorted.mentsus[i].type == Mentsu.Kotsu && i != ron.sorted.lastTileIndicator) {
+            if (ron.sorted.mentsus[i]!=null &&
+                    ron.sorted.mentsus[i].type == Mentsu.Kotsu &&
+                    (ron.agariInfo.source.isTsumoFamily() || i != ron.sorted.lastTileIndicator)) {
                 c++;
             }
         }
+
+        c+=ron.ankans.length;
+
         if (c == 3) {
             return 2;
         } else {

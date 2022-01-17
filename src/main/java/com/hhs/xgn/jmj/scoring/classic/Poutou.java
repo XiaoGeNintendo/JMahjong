@@ -12,6 +12,11 @@ public class Poutou extends Yaku {
 
 
     @Override
+    public String[] ignore() {
+        return new String[]{"qys"};
+    }
+
+    @Override
     public boolean isYakuman() {
         return true;
     }

@@ -1,6 +1,7 @@
 package com.hhs.xgn.jmj.scoring.classic;
 
 import com.hhs.xgn.jmj.RonWrapper;
+import com.hhs.xgn.jmj.scoring.AgariInfo;
 import com.hhs.xgn.jmj.scoring.Yaku;
 
 public class Chiihou extends Yaku {
@@ -20,22 +21,22 @@ public class Chiihou extends Yaku {
 
     @Override
     public int check(RonWrapper ron) {
-        if(ron.sorted==null){
+        if (ron.sorted == null) {
             //must be chiitoitsu or musou
-            if(new Chiitoitsu().check(ron)==0 && new Kokushimusou().check(ron)==0 && new Kokushimusou13().check(ron)==0){
+            if (new Chiitoitsu().check(ron) == 0 && new Kokushimusou().check(ron) == 0 && new Kokushimusou13().check(ron) == 0) {
                 return 0;
             }
         }
-        if(ron.sorted==null){
+        if (ron.sorted == null) {
             //must be chiitoitsu or musou
-            if(new Chiitoitsu().check(ron)==0 && new Kokushimusou().check(ron)==0 && new Kokushimusou13().check(ron)==0){
+            if (new Chiitoitsu().check(ron) == 0 && new Kokushimusou().check(ron) == 0 && new Kokushimusou13().check(ron) == 0) {
                 return 0;
             }
         }
 
-        if(!ron.agariInfo.isDealer()) {
+        if (!ron.agariInfo.isDealer() && ron.agariInfo.source == AgariInfo.TileSource.FirstTsumo) {
             return 13;
-        }else{
+        } else {
             return 0;
         }
     }

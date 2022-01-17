@@ -11,6 +11,11 @@ public class Kokushimusou13 extends Yaku {
     }
 
     @Override
+    public String[] ignore() {
+        return new String[]{"gsws"};
+    }
+
+    @Override
     public boolean isNormalOnly() {
         return false;
     }
@@ -27,7 +32,6 @@ public class Kokushimusou13 extends Yaku {
         }
 
         int[] cnt=ron.raw.toCountArray();
-        cnt[ron.lastTile.id]++;
 
         for(Tiles t: TileConstant.TerminalTile) {
             if (cnt[t.ordinal()] != 1) {

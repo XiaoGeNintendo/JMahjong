@@ -16,6 +16,11 @@ public class Tsuuiisou extends Yaku {
     }
 
     @Override
+    public String[] ignore() {
+        return new String[]{"hlt","hys"};
+    }
+
+    @Override
     public int check(RonWrapper ron) {
         int[] x=new int[10];
         for(Tile t:ron.raw.getTiles()){

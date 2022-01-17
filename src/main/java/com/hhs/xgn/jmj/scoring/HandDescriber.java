@@ -13,7 +13,7 @@ public class HandDescriber {
     public String toString() {
         return "HandDescriber{" +
                 "fu=" + fu +
-                ", totalHan=" + (getHan() + getYakumanHan() * 13) +
+                ", totalHan=" + (getHan()) +
                 ", yakus=" + yakus +
                 ", yakumans=" + yakumans +
                 '}';
@@ -42,12 +42,16 @@ public class HandDescriber {
      *
      * @return the han without yakuman han
      */
-    public long getHan() {
+    public long getNormalHan() {
         long x = 0;
         for (Map.Entry<String, Integer> e : yakus.entrySet()) {
             x += e.getValue();
         }
         return x;
+    }
+
+    public long getHan(){
+        return getNormalHan()+getYakumanHan()*13;
     }
 
     /**
