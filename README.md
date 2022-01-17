@@ -13,9 +13,6 @@ This is also a self-use library for my future projects.
 - All yakus on [riichi.wiki](https://riichi.wiki/List_of_yaku) (except for 流し満貫) are supported
 - An ~~not-so-good~~ English documentation and Javadoc
  
-## How to use
-
-Please refer to the Github [wiki]()...
 ## Disadvantages
 Well, I hate telling others what we have without telling them what we don't have.
 - Author is Chinese. You can expect Chinglish everywhere.
@@ -23,6 +20,10 @@ Well, I hate telling others what we have without telling them what we don't have
 - Hard-to-read code style and messy project files.
 - Some parts are not elegant enough.
 - No building instruction.
+
+## How to use
+
+Please refer to the WIP Github [wiki]()...
 
 ## Future Plans
 - Shanten Calculation
