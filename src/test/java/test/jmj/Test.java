@@ -1,7 +1,7 @@
 package test.jmj;
 
-import com.hhs.xgn.jmj.Hand;
-import com.hhs.xgn.jmj.util.HandUtil;
+import top.hellholestudios.xgn.jmj.Hand;
+import top.hellholestudios.xgn.jmj.util.HandUtil;
 
 import java.util.Arrays;
 import java.util.Scanner;

@@ -1,14 +1,12 @@
 package test.jmj;
 
-import com.hhs.xgn.jmj.*;
-import com.hhs.xgn.jmj.scoring.AgariInfo;
-import com.hhs.xgn.jmj.scoring.HandDescriber;
-import com.hhs.xgn.jmj.scoring.Yaku;
-import com.hhs.xgn.jmj.scoring.classic.DefaultRuleset;
-import com.hhs.xgn.jmj.util.HandUtil;
+import top.hellholestudios.xgn.jmj.*;
+import top.hellholestudios.xgn.jmj.scoring.AgariInfo;
+import top.hellholestudios.xgn.jmj.scoring.HandDescriber;
+import top.hellholestudios.xgn.jmj.scoring.classic.DefaultRuleset;
+import top.hellholestudios.xgn.jmj.util.HandUtil;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.Scanner;
 
