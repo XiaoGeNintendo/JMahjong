@@ -1,4 +1,6 @@
 # JMahjong
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/6ed43c4d49b54d16af5894212a0795ae)](https://www.codacy.com/gh/XiaoGeNintendo/JMahjong/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=XiaoGeNintendo/JMahjong&amp;utm_campaign=Badge_Grade)
+
 (Aims to be) an easy-to-use, extensive Mahjong library for JVM languages
 ## Motivation
 JMahjong is born with the intention to provide an alternative to the most popular Java Japanese Mahjong library [Mahjong4j](https://github.com/mahjong4j/mahjong4j).

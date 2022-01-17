@@ -1,6 +1,8 @@
 package com.hhs.xgn.jmj.util;
 
 public class JavaUtil {
+    public static boolean debug = false;
+
     /**
      * Returns true if the array contains the given element
      * @param x the array

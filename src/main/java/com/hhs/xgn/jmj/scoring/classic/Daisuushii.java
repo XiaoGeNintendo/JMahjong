@@ -21,7 +21,7 @@ public class Daisuushii extends Yaku {
         return true;
     }
 
-    private int wanted(int x, RonWrapper wrapper){
+    private int wanted(int x){
         Tiles t=Tiles.from(x);
         if(t.isWind()){
             return 1;
@@ -34,15 +34,15 @@ public class Daisuushii extends Yaku {
         int s=0;
         for (int i = 0; i < 4; i++) {
             if (ron.sorted.mentsus[i] != null){
-                s+=wanted(ron.sorted.mentsus[i].tile,ron);
+                s+=wanted(ron.sorted.mentsus[i].tile);
             }
         }
 
         for(Mentsu m: ron.ankans){
-            s+=wanted(m.tile,ron);
+            s+=wanted(m.tile);
         }
         for(Mentsu m:ron.fuuro){
-            s+=wanted(m.tile,ron); //ensured that terminal tiles cannot form shuntsu
+            s+=wanted(m.tile); //ensured that terminal tiles cannot form shuntsu
         }
 
         if(s==4){

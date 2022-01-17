@@ -5,7 +5,6 @@ import com.hhs.xgn.jmj.RonWrapper;
 import com.hhs.xgn.jmj.Tile;
 import com.hhs.xgn.jmj.Tiles;
 import com.hhs.xgn.jmj.scoring.Yaku;
-import com.hhs.xgn.jmj.util.TileConstant;
 
 public class Honroutou extends Yaku {
     public Honroutou() {

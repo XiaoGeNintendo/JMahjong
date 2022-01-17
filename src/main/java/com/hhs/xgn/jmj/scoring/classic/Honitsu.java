@@ -3,7 +3,6 @@ package com.hhs.xgn.jmj.scoring.classic;
 import com.hhs.xgn.jmj.Mentsu;
 import com.hhs.xgn.jmj.RonWrapper;
 import com.hhs.xgn.jmj.Tile;
-import com.hhs.xgn.jmj.scoring.AgariInfo;
 import com.hhs.xgn.jmj.scoring.Yaku;
 
 public class Honitsu extends Yaku {

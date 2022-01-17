@@ -3,10 +3,7 @@ package com.hhs.xgn.jmj.util;
 import com.hhs.xgn.jmj.*;
 import com.hhs.xgn.jmj.exception.HandTileCountException;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 
 public class HandUtil {
@@ -28,12 +25,10 @@ public class HandUtil {
         if (mentsu < 4 && cnt[view] >= 3) {
             cnt[view] -= 3;
             cur.mentsus[mentsu] = new Mentsu(view, Mentsu.Kotsu);
-            mentsu++;
 
-            dfsbd(cnt, out, view, mentsu, head, true, cur);
+            dfsbd(cnt, out, view, mentsu+1, head, true, cur);
 
             cnt[view] += 3;
-            mentsu--;
             cur.mentsus[mentsu] = null;
         }
 
@@ -41,13 +36,11 @@ public class HandUtil {
         if (cnt[view] >= 2 && !head) {
             cnt[view] -= 2;
             cur.head = new Toitsu(view);
-            head = true;
 
-            dfsbd(cnt, out, view, mentsu, head, usedKotsu, cur);
+            dfsbd(cnt, out, view, mentsu, true, usedKotsu, cur);
 
             cnt[view] += 2;
             cur.head = null;
-            head = false;
         }
 
         //shuntsu
@@ -61,14 +54,12 @@ public class HandUtil {
             cnt[t.getNextTile().ordinal()]--;
             cnt[t.getNextTile().getNextTile().ordinal()]--;
             cur.mentsus[mentsu] = new Mentsu(view, Mentsu.Shuntsu);
-            mentsu++;
 
-            dfsbd(cnt, out, view, mentsu, head, usedKotsu, cur);
+            dfsbd(cnt, out, view, mentsu+1, head, usedKotsu, cur);
 
             cnt[view]++;
             cnt[t.getNextTile().ordinal()]++;
             cnt[t.getNextTile().getNextTile().ordinal()]++;
-            mentsu--;
             cur.mentsus[mentsu] = null;
         }
     }

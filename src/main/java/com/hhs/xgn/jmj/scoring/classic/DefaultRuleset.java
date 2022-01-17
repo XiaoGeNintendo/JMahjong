@@ -6,11 +6,11 @@ import com.hhs.xgn.jmj.scoring.HandDescriber;
 import com.hhs.xgn.jmj.scoring.Ruleset;
 import com.hhs.xgn.jmj.scoring.Yaku;
 import com.hhs.xgn.jmj.util.HandUtil;
+import com.hhs.xgn.jmj.util.JavaUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
-import java.util.function.Function;
 
 public class DefaultRuleset extends Ruleset {
 
@@ -113,7 +113,9 @@ public class DefaultRuleset extends Ruleset {
     }
 
     private void l(String s) {
-        System.out.println(s);
+        if(JavaUtil.debug) {
+            System.out.println(s);
+        }
     }
 
     /**
