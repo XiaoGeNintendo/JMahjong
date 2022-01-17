@@ -1,8 +1,12 @@
 package top.hellholestudios.xgn.jmj;
 
+import top.hellholestudios.xgn.jmj.exception.HandTileCountException;
 import top.hellholestudios.xgn.jmj.scoring.Ruleset;
 import top.hellholestudios.xgn.jmj.scoring.Yaku;
+import top.hellholestudios.xgn.jmj.util.JavaUtil;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Map;
 
 /**
@@ -21,6 +25,82 @@ public class ShantenCalculator {
             }
         }
         return x;
+    }
+
+    /**
+     * Suggest throwing according to tile efficiency. <br>
+     * If the count array is 3n+1 style, return an array with a single Suggestion whose throw ID is -1. <br>
+     * If the count array is 3n+2 style, return an array with suggestions sorted by tile efficiency. <br>
+     * @param countArr the count array representing the hand
+     * @param yakus all the yakus
+     * @return list of suggestions or waits
+     */
+    public static Suggestion[] suggest(int[] countArr, Ruleset yakus){
+
+        int count=JavaUtil.sum(countArr);
+        int shanten=getShanten(countArr,yakus);
+
+        ArrayList<Suggestion> suggestions=new ArrayList<>();
+        if(count%3==1){
+            Suggestion s=new Suggestion();
+            s.throwID=-1;
+            ArrayList<Integer> tmp=new ArrayList<>();
+            for(int i=0;i<Tiles.values().length;i++){
+                countArr[i]++;
+                int newShanten=getShanten(countArr,yakus);
+                if(newShanten<shanten){
+                    s.efficiency+=Math.max(0,4-countArr[i]+1);
+                    tmp.add(i);
+                }
+                countArr[i]--;
+            }
+
+            s.waitID=new int[tmp.size()];
+            for(int i=0;i<tmp.size();i++){
+                s.waitID[i]=tmp.get(i);
+            }
+
+            suggestions.add(s);
+        } else if (count % 3 == 2) {
+            for(int i=0;i<Tiles.values().length;i++){
+                if(countArr[i]>0){
+                    Suggestion s=new Suggestion();
+                    s.throwID=i;
+                    countArr[i]--;
+                    ArrayList<Integer> tmp=new ArrayList<>();
+                    for(int j=0;j<Tiles.values().length;j++){
+                        countArr[j]++;
+                        int nw=getShanten(countArr,yakus);
+                        if(nw<shanten){
+                            s.efficiency+=Math.max(0,4-countArr[j]+1);
+                            tmp.add(j);
+                        }
+                        countArr[j]--;
+                    }
+
+                    if(tmp.size()!=0){
+                        s.waitID=new int[tmp.size()];
+                        for(int j=0;j<tmp.size();j++){
+                            s.waitID[j]=tmp.get(j);
+                        }
+
+                        suggestions.add(s);
+                    }
+
+                    countArr[i]++;
+                }
+            }
+        }else{
+            throw new HandTileCountException("Invalid tile count:"+count);
+        }
+
+        suggestions.sort(new Comparator<Suggestion>() {
+            @Override
+            public int compare(Suggestion o1, Suggestion o2) {
+                return -Integer.compare(o1.efficiency,o2.efficiency);
+            }
+        });
+        return suggestions.toArray(new Suggestion[0]);
     }
 
     public static int getNormalShanten(int[] countArr) {
