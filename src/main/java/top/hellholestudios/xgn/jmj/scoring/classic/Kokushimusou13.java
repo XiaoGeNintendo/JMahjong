@@ -3,7 +3,7 @@ package top.hellholestudios.xgn.jmj.scoring.classic;
 import top.hellholestudios.xgn.jmj.RonWrapper;
 import top.hellholestudios.xgn.jmj.Tiles;
 import top.hellholestudios.xgn.jmj.scoring.Yaku;
-import top.hellholestudios.xgn.jmj.util.TileConstant;
+import top.hellholestudios.xgn.jmj.util.TileConstants;
 
 public class Kokushimusou13 extends Yaku {
     public Kokushimusou13() {
@@ -33,7 +33,7 @@ public class Kokushimusou13 extends Yaku {
 
         int[] cnt=ron.raw.toCountArray();
 
-        for(Tiles t: TileConstant.TerminalTile) {
+        for(Tiles t: TileConstants.TerminalTile) {
             if (cnt[t.ordinal()] != 1) {
                 return 0;
             }

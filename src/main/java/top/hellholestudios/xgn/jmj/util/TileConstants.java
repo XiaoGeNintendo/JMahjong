@@ -2,7 +2,7 @@ package top.hellholestudios.xgn.jmj.util;
 
 import top.hellholestudios.xgn.jmj.Tiles;
 
-public class TileConstant {
+public class TileConstants {
     public static final Tiles[] TerminalTile=new Tiles[]{
             Tiles.OneMan,
             Tiles.NineMan,

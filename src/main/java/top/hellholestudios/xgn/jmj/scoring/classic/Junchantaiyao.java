@@ -4,7 +4,7 @@ import top.hellholestudios.xgn.jmj.Mentsu;
 import top.hellholestudios.xgn.jmj.RonWrapper;
 import top.hellholestudios.xgn.jmj.Tiles;
 import top.hellholestudios.xgn.jmj.scoring.Yaku;
-import top.hellholestudios.xgn.jmj.util.TileConstant;
+import top.hellholestudios.xgn.jmj.util.TileConstants;
 
 public class Junchantaiyao extends Yaku {
     public Junchantaiyao() {
@@ -18,7 +18,7 @@ public class Junchantaiyao extends Yaku {
     }
 
     private boolean check(Mentsu m) {
-        for (Tiles t : TileConstant.OneNineTile) {
+        for (Tiles t : TileConstants.OneNineTile) {
             if (m.contains(t.ordinal())) {
                 return true;
             }
@@ -36,7 +36,7 @@ public class Junchantaiyao extends Yaku {
         }
 
         boolean ok=false;
-        for(Tiles t:TileConstant.OneNineTile){
+        for(Tiles t: TileConstants.OneNineTile){
             if(t.ordinal()==ron.sorted.head.tile){
                 ok=true;
                 break;

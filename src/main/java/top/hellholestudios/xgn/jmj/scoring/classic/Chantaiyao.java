@@ -4,7 +4,7 @@ import top.hellholestudios.xgn.jmj.Mentsu;
 import top.hellholestudios.xgn.jmj.RonWrapper;
 import top.hellholestudios.xgn.jmj.Tiles;
 import top.hellholestudios.xgn.jmj.scoring.Yaku;
-import top.hellholestudios.xgn.jmj.util.TileConstant;
+import top.hellholestudios.xgn.jmj.util.TileConstants;
 
 public class Chantaiyao extends Yaku {
     public Chantaiyao() {
@@ -13,7 +13,7 @@ public class Chantaiyao extends Yaku {
 
 
     private boolean check(Mentsu m) {
-        for (Tiles t : TileConstant.TerminalTile) {
+        for (Tiles t : TileConstants.TerminalTile) {
             if (m.contains(t.ordinal())) {
                 return true;
             }
@@ -31,7 +31,7 @@ public class Chantaiyao extends Yaku {
         }
 
         boolean ok=false;
-        for(Tiles t:TileConstant.TerminalTile){
+        for(Tiles t: TileConstants.TerminalTile){
             if(t.ordinal()==ron.sorted.head.tile){
                 ok=true;
                 break;

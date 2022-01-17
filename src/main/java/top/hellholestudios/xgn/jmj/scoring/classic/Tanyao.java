@@ -5,7 +5,7 @@ import top.hellholestudios.xgn.jmj.RonWrapper;
 import top.hellholestudios.xgn.jmj.Tile;
 import top.hellholestudios.xgn.jmj.Tiles;
 import top.hellholestudios.xgn.jmj.scoring.Yaku;
-import top.hellholestudios.xgn.jmj.util.TileConstant;
+import top.hellholestudios.xgn.jmj.util.TileConstants;
 
 public class Tanyao extends Yaku {
     public Tanyao() {
@@ -26,14 +26,14 @@ public class Tanyao extends Yaku {
         }
 
         for(Mentsu m:ron.fuuro){
-            for(Tiles t: TileConstant.TerminalTile) {
+            for(Tiles t: TileConstants.TerminalTile) {
                 if (m.contains(t.ordinal())){
                     return 0;
                 }
             }
         }
         for(Mentsu m:ron.ankans){
-            for(Tiles t: TileConstant.TerminalTile) {
+            for(Tiles t: TileConstants.TerminalTile) {
                 if (m.contains(t.ordinal())){
                     return 0;
                 }

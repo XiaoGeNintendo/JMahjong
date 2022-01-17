@@ -1,6 +1,6 @@
 package top.hellholestudios.xgn.jmj;
 
-import top.hellholestudios.xgn.jmj.util.TileConstant;
+import top.hellholestudios.xgn.jmj.util.TileConstants;
 
 public enum Tiles {
 
@@ -133,7 +133,7 @@ public enum Tiles {
     }
 
     public boolean isGreen() {
-        for(Tiles t: TileConstant.GreenTiles){
+        for(Tiles t: TileConstants.GreenTiles){
             if(t==this){
                 return true;
             }

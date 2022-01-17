@@ -24,7 +24,6 @@ public class CPoutou extends Yaku {
         int[] cnt = ron.raw.toCountArray();
 
         for (int i = 0; i < 27; i += 9) {
-            boolean used = false;
             boolean ok = true;
             for (int j = 0; j < 9; j++) {
                 int id = i + j;
