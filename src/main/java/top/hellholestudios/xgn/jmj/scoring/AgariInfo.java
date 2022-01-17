@@ -64,12 +64,19 @@ public class AgariInfo {
     public Wind seatWind;
     public int[] doras;
 
-    public AgariInfo(AgariType agariType, TileSource source, Wind prevalentWind, Wind seatWind, int[] doras) {
-        this.agariType = agariType;
+    public AgariInfo(TileSource source, Wind prevalentWind, Wind seatWind, int[] doras) {
         this.source = source;
         this.prevalantWind = prevalentWind;
         this.seatWind = seatWind;
         this.doras = doras;
+    }
+
+    public AgariType getAgariType(){
+        if(source.isTsumoFamily()){
+            return AgariType.Tsumo;
+        }else{
+            return AgariType.Ron;
+        }
     }
 
     public boolean isDealer(){

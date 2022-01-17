@@ -2,6 +2,7 @@ package top.hellholestudios.xgn.jmj.scoring.classic;
 
 import top.hellholestudios.xgn.jmj.Mentsu;
 import top.hellholestudios.xgn.jmj.RonWrapper;
+import top.hellholestudios.xgn.jmj.scoring.AgariInfo;
 import top.hellholestudios.xgn.jmj.scoring.Yaku;
 
 public class Sanankou extends Yaku {
@@ -16,7 +17,7 @@ public class Sanankou extends Yaku {
         for (int i = 0; i < 4; i++) {
             if (ron.sorted.mentsus[i]!=null &&
                     ron.sorted.mentsus[i].type == Mentsu.Kotsu &&
-                    (ron.agariInfo.source.isTsumoFamily() || i != ron.sorted.lastTileIndicator)) {
+                    (ron.agariInfo.getAgariType()== AgariInfo.AgariType.Tsumo || i != ron.sorted.lastTileIndicator)) {
                 c++;
             }
         }
