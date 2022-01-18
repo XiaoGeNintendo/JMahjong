@@ -272,12 +272,12 @@ public class DefaultRuleset extends Ruleset {
                 }
 
                 //tsumo or ron
-                if (agariInfo.agariType == AgariInfo.AgariType.Tsumo) {
+                if (agariInfo.getAgariType() == AgariInfo.AgariType.Tsumo) {
                     l("zm2f");
                     fu += 2;
                 }
 
-                if (agariInfo.agariType == AgariInfo.AgariType.Ron && wrapper.isMenchin()) {
+                if (agariInfo.getAgariType() == AgariInfo.AgariType.Ron && wrapper.isMenchin()) {
                     l("rh10f");
                     fu += 10;
                 }

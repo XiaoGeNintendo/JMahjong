@@ -16,7 +16,7 @@ public class MenchinTsumo extends Yaku {
 
     @Override
     public int check(RonWrapper ron) {
-        boolean ok=ron.isMenchin() && ron.agariInfo.agariType == AgariInfo.AgariType.Tsumo;
+        boolean ok=ron.isMenchin() && ron.agariInfo.getAgariType() == AgariInfo.AgariType.Tsumo;
         if(ok){
             return 1;
         }else{

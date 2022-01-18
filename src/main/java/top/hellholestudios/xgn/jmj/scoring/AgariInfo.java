@@ -55,7 +55,6 @@ public class AgariInfo {
         WRiichi
     }
 
-    public AgariType agariType;
     public TileSource source;
 
     public Riichi riichi = Riichi.NoRiichi;
