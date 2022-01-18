@@ -16,7 +16,7 @@ This is also a self-use library for my future projects.
 -   An ~~not-so-good~~ English documentation and Javadoc
 -   Complete Shanten calculation
 -   Suggestion according to tile efficiency
--   Take a look at the online demo [here](http://45.67.218.195:9977/) (ps. might get destroyed at any time)
+-   Take a look at the online demo(in Chinese) [here](http://45.67.218.195:9977/) (ps. might get destroyed at any time)
 ## Disadvantages
 Well, I hate telling others what we have without telling them what we don't have.
 -   Author is Chinese. You can expect Chinglish everywhere.
