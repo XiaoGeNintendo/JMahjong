@@ -106,7 +106,7 @@ public enum Tiles {
      * @return true if it is 19m19p19s or not number tiles
      */
     public boolean isTerminal() {
-        return ordinal() >= Tiles.East.ordinal() || ordinal() % 9 == 0 || ordinal() % 9 == 8;
+        return ordinal() >= Tiles.East.ordinal() && ordinal() <= Tiles.Red.ordinal() || ordinal() % 9 == 0 || ordinal() % 9 == 8;
     }
 
     /**
@@ -133,8 +133,8 @@ public enum Tiles {
     }
 
     public boolean isGreen() {
-        for(Tiles t: TileConstants.GreenTiles){
-            if(t==this){
+        for (Tiles t : TileConstants.GreenTiles) {
+            if (t == this) {
                 return true;
             }
         }

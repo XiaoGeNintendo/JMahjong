@@ -31,6 +31,10 @@ public class Kokushimusou13 extends Yaku {
             return 0;
         }
 
+        if(!Tiles.from(ron.lastTile.id).isTerminal()){
+            return 0;
+        }
+
         int[] cnt=ron.raw.toCountArray();
 
         for(Tiles t: TileConstants.TerminalTile) {

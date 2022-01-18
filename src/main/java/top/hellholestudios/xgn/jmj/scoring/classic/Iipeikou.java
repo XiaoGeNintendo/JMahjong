@@ -20,11 +20,11 @@ public class Iipeikou extends Yaku {
             return 0;
         }
         for(int i=0;i<4;i++){
-            if(ron.sorted.mentsus[i].type!=Mentsu.Shuntsu){
+            if(ron.sorted.mentsus[i]==null || ron.sorted.mentsus[i].type!=Mentsu.Shuntsu){
                 continue;
             }
             for(int j=i+1;j<4;j++){
-                if(ron.sorted.mentsus[j].type!=Mentsu.Shuntsu){
+                if(ron.sorted.mentsus[j]==null || ron.sorted.mentsus[j].type!=Mentsu.Shuntsu){
                     continue;
                 }
                 if(ron.sorted.mentsus[i].tile==ron.sorted.mentsus[j].tile){
