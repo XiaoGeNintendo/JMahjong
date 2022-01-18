@@ -10,7 +10,8 @@ import java.util.Comparator;
 import java.util.Map;
 
 /**
- * This is a utility class to calculate the Shanten of the given hand
+ * This is a utility class to calculate the Shanten of the given hand <br>
+ * The algorithm used is provided by <a href="https://zhuanlan.zhihu.com/p/31000381">九条可怜</a>
  */
 public class ShantenCalculator {
 

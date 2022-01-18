@@ -132,6 +132,8 @@ public class HandUtil {
     }
 
     /**
+     * <b>This method is deprecated. Please use <code>ShantenCalculator.suggest</code></b> <br>
+     *
      * Given a count array of a 3n+1 listening hand (i.e. One tile from winning)
      * Return all possible tiles to achieve a win. <br>
      *
@@ -141,6 +143,7 @@ public class HandUtil {
      * @return all possible final tile ID
      * @throws HandTileCountException
      */
+    @Deprecated
     public static Integer[] getListen(int[] countArr) {
         int sm = 0;
         for (int x : countArr) {
