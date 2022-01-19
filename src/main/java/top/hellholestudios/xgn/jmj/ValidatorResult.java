@@ -19,7 +19,7 @@ public enum ValidatorResult {
      */
     FuuroCountOverflow(ErrorLevel.MAJOR),
     /**
-     * The total tile count in hand, fuuro and ankan <13
+     * The total tile count in hand, fuuro and ankan &lt;13
      */
     FuuroCountUnderflow(ErrorLevel.MAJOR),
     ;
