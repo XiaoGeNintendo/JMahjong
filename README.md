@@ -17,7 +17,7 @@ This is also a self-use library for my future projects.
 -   Complete Shanten calculation
 -   Suggestion according to tile efficiency
 -   Validate tiles and hands
--   Take a look at the online demo(in Chinese) [here](http://maj.hellholestudios.top/) (ps. might get destroyed at any time)
+-   Take a look at the online demo(in Chinese) [here](http://maj.hellholestudios.top/) [also open-sourced](https://github.com/HellHoleStudios/HHS-Mahjong-Site) (ps. might get destroyed at any time)
 
 ## Disadvantages
 Well, I hate telling others what we have without telling them what we don't have.
