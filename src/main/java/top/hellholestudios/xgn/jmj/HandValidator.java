@@ -103,6 +103,13 @@ public class HandValidator {
         if(c<13){
             return ValidatorResult.FuuroCountUnderflow;
         }
+
+        for(int i:arr){
+            if(i>4){
+                return ValidatorResult.IllegalTileCountArray;
+            }
+        }
+
         return ValidatorResult.AllOK;
     }
 }

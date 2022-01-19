@@ -22,6 +22,14 @@ public enum ValidatorResult {
      * The total tile count in hand, fuuro and ankan &lt;13
      */
     FuuroCountUnderflow(ErrorLevel.MAJOR),
+    /**
+     * You can utilize this error to represent unexpected cases
+     */
+    FailMajor(ErrorLevel.MAJOR),
+    /**
+     * You can utilize this error to represent unexpected cases
+     */
+    FailMinor(ErrorLevel.MINOR)
     ;
 
     enum ErrorLevel{
