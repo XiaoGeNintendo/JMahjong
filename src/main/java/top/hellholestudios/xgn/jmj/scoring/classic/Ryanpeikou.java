@@ -22,7 +22,7 @@ public class Ryanpeikou extends Yaku {
         }
 
         for (int i = 0; i < 4; i++) {
-            if (ron.sorted.mentsus[i].type != Mentsu.Shuntsu) {
+            if (ron.sorted.mentsus[i]==null || ron.sorted.mentsus[i].type != Mentsu.Shuntsu) {
                 return 0;
             }
         }

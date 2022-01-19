@@ -16,9 +16,6 @@ public class Iipeikou extends Yaku {
             return 0;
         }
 
-        if(ron.ankans.length!=0){
-            return 0;
-        }
         for(int i=0;i<4;i++){
             if(ron.sorted.mentsus[i]==null || ron.sorted.mentsus[i].type!=Mentsu.Shuntsu){
                 continue;
