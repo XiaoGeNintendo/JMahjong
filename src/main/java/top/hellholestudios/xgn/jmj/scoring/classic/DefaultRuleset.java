@@ -113,7 +113,7 @@ public class DefaultRuleset extends Ruleset {
     }
 
     private void l(String s) {
-        if(JavaUtil.debug) {
+        if (JavaUtil.debug) {
             System.out.println(s);
         }
     }
@@ -128,6 +128,14 @@ public class DefaultRuleset extends Ruleset {
             return true;
         }
         if (scoreA < scoreB) {
+            return false;
+        }
+        long hanA = a.getHan();
+        long hanB = b.getHan();
+        if (hanA > hanB) {
+            return true;
+        }
+        if (hanA < hanB) {
             return false;
         }
         return (a.yakumans.size() + a.yakus.size() > b.yakus.size() + b.yakumans.size());

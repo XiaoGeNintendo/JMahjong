@@ -28,21 +28,21 @@ public class Test2 {
                 ArrayList<Mentsu> fuuro = new ArrayList<>();
                 ArrayList<Mentsu> dks = new ArrayList<>();
 
-                String st = s.nextLine();
-                String[] str = st.split("#");
-                String[] str0 = str[0].split(",");
-                String[] str1 = str[1].split(",");
-
-                for (String x : str0) {
-                    if(!x.trim().isEmpty()) {
-                        dks.add(HandUtil.toMentsu(HandUtil.fromNotationRaw(x.trim())));
-                    }
-                }
-                for (String x : str1) {
-                    if(!x.trim().isEmpty()) {
-                        fuuro.add(HandUtil.toMentsu(HandUtil.fromNotationRaw(x.trim())));
-                    }
-                }
+//                String st = s.nextLine();
+//                String[] str = st.split("#");
+//                String[] str0 = str[0].split(",");
+//                String[] str1 = str[1].split(",");
+//
+//                for (String x : str0) {
+//                    if(!x.trim().isEmpty()) {
+//                        dks.add(HandUtil.toMentsu(HandUtil.fromNotationRaw(x.trim())));
+//                    }
+//                }
+//                for (String x : str1) {
+//                    if(!x.trim().isEmpty()) {
+//                        fuuro.add(HandUtil.toMentsu(HandUtil.fromNotationRaw(x.trim())));
+//                    }
+//                }
 //                System.out.println("输入副露情况。输入E结束！s=顺子 k=刻子 K=杠子 dK=暗杠");
 //                ArrayList<Mentsu> fuuro = new ArrayList<>();
 //                ArrayList<Mentsu> dks = new ArrayList<>();
