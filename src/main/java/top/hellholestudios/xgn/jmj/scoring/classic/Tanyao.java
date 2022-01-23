@@ -14,6 +14,11 @@ public class Tanyao extends Yaku {
 
 
     @Override
+    public boolean isNormalOnly() {
+        return false;
+    }
+
+    @Override
     public int check(RonWrapper ron) {
         if (ron.ruleset instanceof DefaultRuleset && ((DefaultRuleset) ron.ruleset).isTanyaoMenchin && !ron.isMenchin()) {
             return 0;
@@ -23,6 +28,10 @@ public class Tanyao extends Yaku {
             if(Tiles.from(t.id).isTerminal()){
                 return 0;
             }
+        }
+
+        if(Tiles.from(ron.lastTile.id).isTerminal()){
+            return 0;
         }
 
         for(Mentsu m:ron.fuuro){
