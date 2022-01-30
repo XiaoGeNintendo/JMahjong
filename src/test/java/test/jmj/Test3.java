@@ -26,7 +26,7 @@ public class Test3 {
             long now = System.currentTimeMillis();
 //            for(int i=0;i<1000;i++) {
             System.out.println("向听数：" + ShantenCalculator.getShanten(hd.toCountArray(), new DefaultRuleset()));
-            var x = ShantenCalculator.suggest(hd.toCountArray(), new DefaultRuleset());
+            var x = ShantenCalculator.suggest(hd.toCountArray(), new DefaultRuleset(),new int[Tiles.values().length]);
             for(Suggestion y:x){
                 if(y.throwID==-1) {
                     System.out.print("待" + y.efficiency + "张 - ");

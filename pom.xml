@@ -6,7 +6,7 @@
 
     <groupId>top.hellholestudios.xgn</groupId>
     <artifactId>jmahjong</artifactId>
-    <version>v1.3.3-SNAPSHOT</version>
+    <version>v1.4.0-SNAPSHOT</version>
     <name>JMahjong</name>
 
     <!-- copied from mahjong4j -->
