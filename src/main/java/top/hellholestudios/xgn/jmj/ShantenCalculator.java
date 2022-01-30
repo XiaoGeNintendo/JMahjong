@@ -82,7 +82,7 @@ public class ShantenCalculator {
                         countArr[j]++;
                         int nw = getShanten(countArr, yakus);
                         if (nw < shanten) {
-                            s.efficiency += Math.max(0, 4 - countArr[j] - otherTiles[i] + 1);
+                            s.efficiency += Math.max(0, 4 - countArr[j] - otherTiles[j] + 1);
                             tmp.add(j);
                         }
                         countArr[j]--;
