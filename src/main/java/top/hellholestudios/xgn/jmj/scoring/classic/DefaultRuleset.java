@@ -180,7 +180,11 @@ public class DefaultRuleset extends Ruleset {
             if (special) {
                 now.fu = 25;
             } else if (now.yakus.containsKey("ph")) {
-                now.fu = 20;
+                if (agariInfo.getAgariType() == AgariInfo.AgariType.Tsumo) {
+                    now.fu = 20;
+                } else {
+                    now.fu = 30;
+                }
             } else {
                 l("cf20");
 
